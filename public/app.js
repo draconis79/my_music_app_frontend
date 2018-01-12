@@ -1,10 +1,10 @@
 console.log('app.js');
 
-const app = angular.module('album', []);
+const app = angular.module('album', [])
 
-app.controller('mainController', ['$http', function($http) {
+app.controller('MainController', ['$http', function($http) {
 
-  this.message = 'controller works';
+  this.message = 'works';
   this.album = [];
 
   $http({
@@ -16,6 +16,7 @@ app.controller('mainController', ['$http', function($http) {
   }).catch(reject => {
     console.log('reject: ', reject);
   });
+
   this.processForm = () => {
     console.log('Form data: ', this.formdata);
     $http({
