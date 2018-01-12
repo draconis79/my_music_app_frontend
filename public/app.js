@@ -1,10 +1,10 @@
 console.log('app.js');
 
-const app = angular.module('AlbumReviewApp', [])
+const app = angular.module('AlbumReviewApp', []);
 
-app.controller('MainController', ['$http', function($http) {
+app.controller('mainController', ['$http', function ($http) {
 
-  this.album = [];
+  this.albums = [];
 
   $http({
     method: 'GET',
