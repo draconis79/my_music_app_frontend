@@ -4,4 +4,4 @@ const PORT    = 3001;
 
 app.use(express.static('public'));
 
-app.listen(PORT, () => console.log('music app - frontend: ', PORT)); 
+app.listen(PORT, () => console.log('music review app - frontend: ', PORT)); 
