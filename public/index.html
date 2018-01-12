@@ -16,15 +16,15 @@
            <div ng-repeat="album in ctrl.albums" class="album">
              <h3>{{ album.artist }}</h3>
              <h2>{{ album.title }}</h2>
-             <img src="{{ album.img }}"></img>
+             <img ng-src="{{ album.img }}" height="500px" width="500px"/>
            </div>
          </main>
          <nav>
            <h4>Add an Album Review</h4>
            <form ng-submit="ctrl.processForm()">
              <input type="text" ng-model="ctrl.formdata.title"placeholder="title"/>
-             <input type="text" ng-model="ctrl.formdata.content" placeholder="content"/>
-             <input type="text" ng-model="ctrl.formdata.author" placeholder="author"/><br/>
+             <input type="text" ng-model="ctrl.formdata.author" placeholder="author"/>
+             <input type="text" ng-model="ctrl.formdata.content" placeholder="content"/><br/>
              <input class="submit" type="submit"/>
            </form>
          </nav>
