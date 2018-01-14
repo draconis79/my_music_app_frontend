@@ -16,8 +16,7 @@
            <div ng-repeat="album in ctrl.albums" class="album">
              <h3>{{ album.artist }}</h3>
              <h2>{{ album.title }}</h2>
-             <img ng-src="{{ album.img }}" height="500px" width="500px"/>
-           </div>
+             <img class="album-art" src="{{ album.img }}"></img>
          </main>
          <nav>
            <h4>Add an Album Review</h4>
