@@ -17,8 +17,7 @@
     <div ng-repeat="album in ctrl.albums" class="album">
       <h3>{{ album.artist }}</h3>
       <h2>{{ album.title }}</h2>
-      <a href="http://localhost:3000/albums/{{album.id}}">
-      <img class="album-art" src="{{ album.img }}"></img></a>
+      <img ng-click="ctrl.getAlbum(album)" class="album-art" src="{{ album.img }}"></img></a>
   </main>
   <nav>
     <h4>Add an Album Review</h4>
