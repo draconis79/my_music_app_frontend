@@ -20,7 +20,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('form data: ', this.formdata);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/albums/2/reviews',
+      url: 'http://localhost:3000/albums' + this.formdata.id + 'reviews',
       data: this.formdata
     }).then(response => {
       console.log('response: is ...', response);
