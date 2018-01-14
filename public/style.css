@@ -39,6 +39,11 @@ nav, aside {
   border-radius: 5px;
 }
 
+.album-art {
+  width: 300px;
+  height: auto;
+}
+
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
