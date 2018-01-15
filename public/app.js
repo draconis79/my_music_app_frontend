@@ -5,13 +5,31 @@ const app = angular.module('AlbumReviewApp', []);
 app.controller('mainController', ['$http', function ($http) {
   this.formdata = {};
   this.albums = [];
+  this.album = {};
+  this.toggle = true;
+
+  this.getAlbum = (album) => {
+    console.log("Clicked the album");
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/albums/' + album.id
+    }).then((response) => {
+      console.log(response.data);
+      this.album = response.data;
+      this.toggle = !this.toggle;
+      console.log(this.toggle);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 
   $http({
     method: 'GET',
-    url: 'http://localhost:3000/albums',
+    url: 'http://localhost:3000/albums'
   }).then(response => {
     console.log('response is ...: ', response);
     this.albums = response.data;
+    console.log(this.toggle);
   }).catch(reject => {
     console.log('reject is ...: ', reject);
   });
@@ -20,7 +38,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('form data: ', this.formdata);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/albums' + this.formdata.id + 'reviews',
+      url: 'http://localhost:3000/albums/' + this.formdata.id + '/reviews',
       data: this.formdata
     }).then(response => {
       console.log('response: is ...', response);
@@ -30,4 +48,4 @@ app.controller('mainController', ['$http', function ($http) {
     });
   };
 
-}]);
+}])
