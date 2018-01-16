@@ -7,6 +7,7 @@ app.controller('mainController', ['$http', function ($http) {
   this.albums = [];
   this.album = {};
   this.toggle = true;
+  this.reviews = [];
 
   this.getAlbum = (album) => {
     console.log("Clicked the album");
