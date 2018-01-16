@@ -1,3 +1,6 @@
+* {
+  border: 2px solid red;
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -12,6 +15,16 @@ body {
   flex-direction: column;
   background-color: lightgrey;
   border-radius: 5px;
+
+}
+
+.container1 {
+  display: flex;
+  flex: 1;
+  margin-right: 30px;
+  border-radius: 5px;
+  max-width: 1000px;
+  max-height: 300px;
 }
 
 header {
@@ -37,6 +50,13 @@ nav, aside {
   padding: 5px 15px 5px 15px;
   background-color: lightblue;
   border-radius: 5px;
+}
+.reviews {
+  height: 200px;
+  margin-left: 30px;
+}
+.form {
+  margin-left: 30px;
 }
 
 .album-art {
