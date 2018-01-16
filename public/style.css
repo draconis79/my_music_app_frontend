@@ -1,6 +1,6 @@
-* {
+/** {
   border: 2px solid red;
-}
+}*/
 body {
   display: flex;
   min-height: 100vh;
@@ -57,6 +57,9 @@ nav, aside {
 }
 .form {
   margin-left: 30px;
+  width: 200px;
+  border: 2px solid black;
+  text-align: center;
 }
 
 .album-art {

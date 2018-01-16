@@ -18,6 +18,16 @@
       <h2>{{ album.title }}</h2>
       <div class="container1">
       <img ng-click="ctrl.getAlbum(album)" class="album-art" src="{{ album.img }}"></img>
+      <div ng-click="ctrl.toggleView()" class="form">
+      <h4>Add an Album Review</h4>
+
+      <form ng-submit="ctrl.processForm()">
+        <input type="text" ng-model="ctrl.formdata.title" placeholder="title" />
+        <input type="text" ng-model="ctrl.formdata.author" placeholder="author" />
+        <input type="text" ng-model="ctrl.formdata.content" placeholder="content" /><br/>
+        <input class="submit" type="submit" />
+      </form>
+  </div>
       <div class="reviews" ng-hide="ctrl.toggle">
           <h2>Reviews</h2>
           <h3 ng-click="ctrl.toggleView()">Click Album to close reviews</h3>
@@ -27,16 +37,6 @@
               <li><strong>Content: </strong> <span>{{ album.reviews.content }}</span></li>
             </ul>
             </div>
-            <div ng-click="ctrl.toggleView()" class="form">
-            <h4>Add an Album Review</h4>
-
-            <form ng-submit="ctrl.processForm()">
-              <input type="text" ng-model="ctrl.formdata.title" placeholder="title" />
-              <input type="text" ng-model="ctrl.formdata.author" placeholder="author" />
-              <input type="text" ng-model="ctrl.formdata.content" placeholder="content" /><br/>
-              <input class="submit" type="submit" />
-            </form>
-        </div>
   </main>
   <aside></aside>
   </div>
