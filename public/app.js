@@ -10,10 +10,10 @@ app.controller('mainController', ['$http', function ($http) {
   this.reviews = [];
 
   this.getAlbum = (album) => {
-    console.log("Clicked the album");
+    console.log('Clicked the album');
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/albums/' + album.id
+      url: 'http://localhost:3000/albums/' + album.id,
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
@@ -22,11 +22,11 @@ app.controller('mainController', ['$http', function ($http) {
     }).catch((err) => {
       console.log(err);
     });
-  }
+  };
 
   $http({
     method: 'GET',
-    url: 'http://localhost:3000/albums'
+    url: 'http://localhost:3000/albums',
   }).then(response => {
     console.log('response is ...: ', response);
     this.albums = response.data;
@@ -40,7 +40,7 @@ app.controller('mainController', ['$http', function ($http) {
     $http({
       method: 'POST',
       url: 'http://localhost:3000/albums/' + this.album.id + '/reviews',
-      data: this.formdata
+      data: this.formdata,
     }).then(response => {
       console.log('response: is ...', response);
       this.albums.unshift(response.data);
@@ -49,4 +49,19 @@ app.controller('mainController', ['$http', function ($http) {
     });
   };
 
-}])
+  this.deleteReview = (review) => {
+    console.log('DELETED the REVIEW');
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.album.reviews[0].id,
+    }).then((response) => {
+      console.log(response.data);
+      this.album = response.data;
+      console.log(this.toggle);
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+
+},
+]);
