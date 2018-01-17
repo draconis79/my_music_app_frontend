@@ -24,16 +24,21 @@ app.controller('mainController', ['$http', function ($http) {
     });
   };
 
-  $http({
-    method: 'GET',
-    url: 'http://localhost:3000/albums',
-  }).then(response => {
-    console.log('response is ...: ', response);
-    this.albums = response.data;
-    console.log(this.toggle);
-  }).catch(reject => {
-    console.log('reject is ...: ', reject);
-  });
+  this.allAlbums = () => {
+
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/albums',
+    }).then(response => {
+      console.log('response is ...: ', response);
+      this.albums = response.data;
+      console.log(this.toggle);
+    }).catch(reject => {
+      console.log('reject is ...: ', reject);
+    });
+  };
+
+  this.allAlbums();
 
   this.processForm = () => {
     console.log('form data: ', this.formdata);
@@ -44,6 +49,7 @@ app.controller('mainController', ['$http', function ($http) {
     }).then(response => {
       console.log('response: is ...', response);
       this.albums.unshift(response.data);
+      this.allAlbums();
     }).catch(reject => {
       console.log('reject: ', reject);
     });
@@ -57,7 +63,7 @@ app.controller('mainController', ['$http', function ($http) {
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
-      console.log(this.toggle);
+      this.allAlbums();
     }).catch((err) => {
       console.log(err);
     });
