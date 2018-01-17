@@ -55,6 +55,20 @@ app.controller('mainController', ['$http', function ($http) {
     });
   };
 
+  this.editReview = (review) => {
+    console.log('EDIT the REVIEW');
+    $http({
+      method: 'PUT',
+      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.album.reviews[0].id,
+    }).then((response) => {
+      console.log(response.data);
+      this.album = response.data;
+      this.allAlbums();
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+
   this.deleteReview = (review) => {
     console.log('DELETED the REVIEW');
     $http({
