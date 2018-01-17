@@ -40,12 +40,14 @@ app.controller('mainController', ['$http', function ($http) {
 
   this.allAlbums();
 
-  this.processForm = () => {
-    console.log('form data: ', this.formdata);
+  this.processForm = (id) => {
+    console.log("Id is:", id);
+    console.log(this.formdata);
+    console.log('form data: ', this.formdata.form[id]);
     $http({
       method: 'POST',
       url: 'http://localhost:3000/albums/' + this.album.id + '/reviews',
-      data: this.formdata,
+      data:  this.formdata.form[id],
     }).then(response => {
       console.log('response: is ...', response);
       this.albums.unshift(response.data);
