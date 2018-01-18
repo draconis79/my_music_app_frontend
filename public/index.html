@@ -16,10 +16,23 @@
 
 <body ng-controller="mainController as ctrl">
 
+  <form ng-submit="ctrl.createReview()" ng-if="ctrl.showOne">
+    <input ng-model="ctrl.createForm.title" type="text" placeholder="Title">
+    <input ng-model="ctrl.createForm.author" type="text" placeholder="Author">
+    <input ng-model="ctrl.createForm.content" type="text" placeholder="Content">
+    <input id="form" class="button" type="submit" value="Submit review">
+  </form>
+
   <div class="album" ng-repeat="album in ctrl.albums">
     <h3>{{ album.artist }}</h3>
     <h2>{{ album.title }}</h2>
-    <img class="album-art" src="{{ album.img }}">
+    <img ng-click="ctrl.albumShow(album)" class="album-art" src="{{ album.img }}">
+    <div ng-repeat="review in ctrl.album.reviews">
+      <p>{{ review.title }}</p>
+      <p>{{ review.author }}</p>
+      <p>{{ review.content }}</p>
+      <p>--------------------</p>
+    </div>
   </div>
 
 </body>
