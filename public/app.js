@@ -3,7 +3,8 @@ console.log('app.js');
 const app = angular.module('AlbumReviewApp', []);
 
 app.controller('mainController', ['$http', function ($http) {
-  this.url = 'https://album-review-api.herokuapp.com/'
+  this.url = 'https://album-review-api.herokuapp.com/';
+  // this.url = 'http://localhost:3001';
   this.formdata = {};
   this.albums = [];
   this.album = {};
