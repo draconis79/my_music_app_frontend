@@ -23,19 +23,23 @@
     <input class="button" type="submit" value="Submit review">
   </form>
 
-  <form ng-submit="ctrl.editReview()" ng-if="ctrl.showEdit">
-    <input ng-model="ctrl.editForm.title" type="text" placeholder="Title">
-    <input ng-model="ctrl.editForm.author" type="text" placeholder="Author">
-    <input ng-model="ctrl.editForm.content" type="text" placeholder="Content">
-    <input class="button" type="submit" value="Edit review">
-  </form>
-
   <div ng-repeat="review in ctrl.album.reviews" ng-if="ctrl.showOne">
-    <p>{{ review.title }}</p>
-    <p>{{ review.author }}</p>
-    <p>{{ review.content }}</p>
-    <button class="button" ng-click="ctrl.showEdit = !ctrl.showEdit">Edit review</button>
-    <p>--------------------</p>
+    <strong>Title:</strong> {{ review.title }}<br>
+    <strong>By:</strong> {{ review.author }}<br>
+    <strong>Review:</strong> {{ review.content }}<br>
+    <form ng-submit="ctrl.showThisEdit(review)">
+      <input class="button" type="submit" value="Edit review">
+    </form>
+    <form ng-submit="ctrl.deleteReview(review)">
+      <input class="button" type="submit" value="Delete review">
+    </form>
+    <hr>
+    <form ng-submit="ctrl.editReview(review)" ng-if="ctrl.showEdit === review.id">
+      <input ng-model="ctrl.editForm.title" type="text" placeholder="Title">
+      <input ng-model="ctrl.editForm.author" type="text" placeholder ="Author">
+      <input ng-model="ctrl.editForm.content" type="text" placeholder="Content">
+      <input class="button" type="submit" value="Edit review">
+    </form>
   </div>
 
   <div class="album" ng-repeat="album in ctrl.albums">
