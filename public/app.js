@@ -14,7 +14,7 @@ app.controller('mainController', ['$http', function($http) {
 
     $http({
       method: 'GET',
-      url: this.url
+      url: this.url + 'albums'
     }).then((response) => {
       console.log("Response:", response.data);
       this.albums = response.data;
@@ -31,7 +31,7 @@ app.controller('mainController', ['$http', function($http) {
     this.createReview = () => {
       $http({
         method: 'POST',
-        url: this.url + this.album.id + '/reviews',
+        url: this.url + "albums/" + this.album.id + '/reviews',
         data: this.createForm
       }).then((response) => {
         console.log("New review:", response.data);
