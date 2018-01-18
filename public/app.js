@@ -7,7 +7,7 @@ app.controller('mainController', ['$http', function($http) {
   this.albums = [];
   this.album = {};
   this.showOne = false;
-  this.showEdit = false;
+  this.showEdit = 0;
   this.review = {};
   this.reviews = [];
   this.url = 'https://album-review-api.herokuapp.com/'
@@ -41,19 +41,38 @@ app.controller('mainController', ['$http', function($http) {
         console.log("Error:", err);
       })};
 
-    this.editReview = () => {
+    this.editReview = (review) => {
+      this.review = review;
+      console.log(this.review);
       console.log("Edit button works");
-    };
-      // $http({
-      //   method: 'PUT',
-      //   url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.review.id,
-      //   data: this.editForm
-      // }).then((response) => {
-      //   console.log("New review:", response.data);
-      //   this.review = response.data;
-      //   this.reviews.unshift(this.review);
-      // }).catch((err) => {
-      //   console.log("Error:", err);
-      // })};
+      $http({
+        method: 'PUT',
+        url: this.url + "albums/" + this.album.id + '/reviews/' + this.review.id,
+        data: this.editForm
+      }).then((response) => {
+        console.log("Edited review:", response.data);
+        this.review = response.data;
+        // this.reviews.unshift(this.review);
+      }).catch((err) => {
+        console.log("Error:", err);
+      })};
+
+      this.showThisEdit = (review) => {
+        this.editForm = {};
+        this.showEdit = review.id;
+      };
+
+      this.deleteReview = (reviewToDelete) => {
+        console.log("Deleting:", reviewToDelete.id);
+        $http({
+          method: 'DELETE',
+          url: this.url + "albums/" + this.album.id + '/reviews/' + reviewToDelete.id
+        }).then((response) => {
+          const reviewIndex = this.reviews.findIndex(review => this.review.id === reviewToDelete.id);
+          this.reviews.splice(reviewIndex, 1);
+        }).catch((err) => {
+          console.log("Error:", err);
+        })};
+
 
 }]);
