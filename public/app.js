@@ -2,21 +2,14 @@ console.log('app.js');
 
 const app = angular.module('AlbumReviewApp', []);
 
-<<<<<<< HEAD
-app.controller('mainController', ['$http', function ($http) {
-  this.url = 'https://album-review-api.herokuapp.com/';
-  // this.url = 'http://localhost:3001';
-  this.formdata = {};
-=======
 app.controller('mainController', ['$http', function($http) {
 
->>>>>>> aa00df28d0770005af769edc86decda0356b4a17
   this.albums = [];
   this.album = {};
   this.showOne = false;
   this.review = {};
   this.reviews = [];
-  this.url = 'https://album-review-api.herokuapp.com/'
+  this.url = 'https://album-review-api.herokuapp.com/albums'
 
     $http({
       method: 'GET',
