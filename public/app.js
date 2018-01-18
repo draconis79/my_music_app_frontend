@@ -7,6 +7,7 @@ app.controller('mainController', ['$http', function($http) {
   this.albums = [];
   this.album = {};
   this.showOne = false;
+  this.showEdit = false;
   this.review = {};
   this.reviews = [];
 
@@ -27,7 +28,6 @@ app.controller('mainController', ['$http', function($http) {
     };
 
     this.createReview = () => {
-      // console.log("Submit new review");
       $http({
         method: 'POST',
         url: 'http://localhost:3000/albums/' + this.album.id + '/reviews',
@@ -39,5 +39,20 @@ app.controller('mainController', ['$http', function($http) {
       }).catch((err) => {
         console.log("Error:", err);
       })};
+
+    this.editReview = () => {
+      console.log("Edit button works");
+    };
+      // $http({
+      //   method: 'PUT',
+      //   url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.review.id,
+      //   data: this.editForm
+      // }).then((response) => {
+      //   console.log("New review:", response.data);
+      //   this.review = response.data;
+      //   this.reviews.unshift(this.review);
+      // }).catch((err) => {
+      //   console.log("Error:", err);
+      // })};
 
 }]);

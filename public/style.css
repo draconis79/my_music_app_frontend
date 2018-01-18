@@ -38,10 +38,10 @@ input {
   margin: 5px;
 }
 
-.submit {
+.button {
   background-color: indigo;
   color: white;
   border: none;
-  border-radius: 2px;
-  padding: 5px;
+  border-radius: 3px;
+  padding: 6px;
 }
