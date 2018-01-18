@@ -2,7 +2,7 @@
 
 <br>
 
-This is a music review app.
+If you are looking for music album reviews, new releases, and top music, this is the right app for you.
 
 <br>
 
@@ -10,9 +10,10 @@ This is a music review app.
 
 - JavaScript
 - Angular
-- Express
+- Express.js
 - Ruby
-- Ruby on Rails
+- Rails
+- PostgreSQL
 - CSS
 - HTML
 - Atom for text-editing
