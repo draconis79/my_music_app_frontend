@@ -9,10 +9,11 @@ app.controller('mainController', ['$http', function($http) {
   this.showOne = false;
   this.review = {};
   this.reviews = [];
+  this.url = 'https://album-review-api.herokuapp.com/'
 
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/albums'
+      url: this.url
     }).then((response) => {
       console.log("Response:", response.data);
       this.albums = response.data;
@@ -30,7 +31,7 @@ app.controller('mainController', ['$http', function($http) {
       // console.log("Submit new review");
       $http({
         method: 'POST',
-        url: 'http://localhost:3000/albums/' + this.album.id + '/reviews',
+        url: this.url + this.album.id + '/reviews',
         data: this.createForm
       }).then((response) => {
         console.log("New review:", response.data);
