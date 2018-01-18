@@ -3,6 +3,7 @@ console.log('app.js');
 const app = angular.module('AlbumReviewApp', []);
 
 app.controller('mainController', ['$http', function ($http) {
+  this.url = 'https://album-review-api.herokuapp.com/'
   this.formdata = {};
   this.albums = [];
   this.album = {};
@@ -13,7 +14,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('Clicked the album');
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/albums/' + album.id,
+      url: this.url + album.id,
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
@@ -24,28 +25,50 @@ app.controller('mainController', ['$http', function ($http) {
     });
   };
 
-  $http({
-    method: 'GET',
-    url: 'http://localhost:3000/albums',
-  }).then(response => {
-    console.log('response is ...: ', response);
-    this.albums = response.data;
-    console.log(this.toggle);
-  }).catch(reject => {
-    console.log('reject is ...: ', reject);
-  });
+  this.allAlbums = () => {
 
-  this.processForm = () => {
-    console.log('form data: ', this.formdata);
+    $http({
+      method: 'GET',
+      url: this.url,
+    }).then(response => {
+      console.log('response is ...: ', response);
+      this.albums = response.data;
+      console.log(this.toggle);
+    }).catch(reject => {
+      console.log('reject is ...: ', reject);
+    });
+  };
+
+  this.allAlbums();
+
+  this.processForm = (id) => {
+    console.log("Id is:", id);
+    console.log(this.formdata);
+    console.log('form data: ', this.formdata.form[id]);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews',
-      data: this.formdata,
+      url: this.url + this.album.id + '/reviews',
+      data:  this.formdata.form[id],
     }).then(response => {
       console.log('response: is ...', response);
       this.albums.unshift(response.data);
+      this.allAlbums();
     }).catch(reject => {
       console.log('reject: ', reject);
+    });
+  };
+
+  this.editReview = (review) => {
+    console.log('EDIT the REVIEW');
+    $http({
+      method: 'PUT',
+      url: this.url + this.album.id + '/reviews/' + this.album.reviews[0].id,
+    }).then((response) => {
+      console.log(response.data);
+      this.album = response.data;
+      this.allAlbums();
+    }).catch((err) => {
+      console.log(err);
     });
   };
 
@@ -53,11 +76,11 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('DELETED the REVIEW');
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.album.reviews[0].id,
+      url: this.url + this.album.id + '/reviews/' + this.album.reviews[0].id,
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
-      console.log(this.toggle);
+      this.allAlbums();
     }).catch((err) => {
       console.log(err);
     });
