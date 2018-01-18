@@ -3,6 +3,7 @@ console.log('app.js');
 const app = angular.module('AlbumReviewApp', []);
 
 app.controller('mainController', ['$http', function ($http) {
+  this.url = 'https://album-review-api.herokuapp.com/'
   this.formdata = {};
   this.albums = [];
   this.album = {};
@@ -13,7 +14,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('Clicked the album');
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/albums/' + album.id,
+      url: this.url + album.id,
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
@@ -28,7 +29,7 @@ app.controller('mainController', ['$http', function ($http) {
 
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/albums',
+      url: this.url,
     }).then(response => {
       console.log('response is ...: ', response);
       this.albums = response.data;
@@ -46,7 +47,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('form data: ', this.formdata.form[id]);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews',
+      url: this.url + this.album.id + '/reviews',
       data:  this.formdata.form[id],
     }).then(response => {
       console.log('response: is ...', response);
@@ -61,7 +62,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('EDIT the REVIEW');
     $http({
       method: 'PUT',
-      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.album.reviews[0].id,
+      url: this.url + this.album.id + '/reviews/' + this.album.reviews[0].id,
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
@@ -75,7 +76,7 @@ app.controller('mainController', ['$http', function ($http) {
     console.log('DELETED the REVIEW');
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/albums/' + this.album.id + '/reviews/' + this.album.reviews[0].id,
+      url: this.url + this.album.id + '/reviews/' + this.album.reviews[0].id,
     }).then((response) => {
       console.log(response.data);
       this.album = response.data;
