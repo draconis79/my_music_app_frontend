@@ -1,80 +1,30 @@
-/** {
-  border: 2px solid red;
-}*/
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  /*background-color: grey;*/
   font-family: 'Open Sans', sans-serif;
-}
-
-.container {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  /*background-color: lightgrey;*/
-  border-radius: 5px;
-
-}
-
-.container1 {
-  display: flex;
-  flex: 1;
-  margin-right: 30px;
-  border-radius: 5px;
-  max-width: 1000px;
-  max-height: 300px;
+  justify-content: center;
 }
 
 header {
   font-family: 'Sedgwick Ave Display', cursive;
   text-align: center;
-  font-size: 50px;
+  font-size: 55px;
   color: indigo;
 }
 
-main {
-  flex: 1;
-}
-
-nav {
-  order: -1;
-}
-
-nav, aside {
-  background-color: white;
-}
-
-.editReview {
-width: 250px;
-}
-
 .album {
-  margin: 5px auto;
-  width: 80%;
-  padding: 5px 15px 5px 15px;
-  /*background-color: lightblue;*/
-  /*border: 2px solid lightblue;
-  border-radius: 3px;*/
-}
-
-.reviews {
-  height: 200px;
-  margin-left: 20px;
+  margin: 20px auto;
 }
 
 .form {
   margin-left: 30px;
   width: 250px;
-  /*border: 1px solid black;
-  border-radius: 3px;*/
   text-align: center;
 }
 
 .album-art {
   padding: 10px;
-  width: 300px;
+  width: 500px;
   height: auto;
   border: 1px solid black;
   border-radius: 3px;
@@ -94,14 +44,4 @@ input {
   border: none;
   border-radius: 2px;
   padding: 5px;
-}
-
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    flex: 1;
-  }
-  nav, aside {
-    flex: 0 0 12em;
-  }
 }

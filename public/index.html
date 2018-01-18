@@ -2,6 +2,7 @@
 <html ng-app="AlbumReviewApp">
 
 <head>
+
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
   <script type="text/javascript" src="/app.js"></script>
@@ -9,45 +10,18 @@
   <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <title>review an album</title>
+  <header>review an album</header>
+
 </head>
 
 <body ng-controller="mainController as ctrl">
-  <header>review an album</header>
-  <div ng-repeat="album in ctrl.albums" class="album">
+
+  <div class="album" ng-repeat="album in ctrl.albums">
     <h3>{{ album.artist }}</h3>
     <h2>{{ album.title }}</h2>
-    <div class="container1">
-      <img ng-click="ctrl.getAlbum(album)" class="album-art" src="{{ album.img }}" />
-      <div ng-click="ctrl.toggleView()" class="form">
-        <h4>Add a review</h4>
-
-        <form ng-submit="ctrl.processForm()">
-          <input type="text" ng-model="ctrl.formdata.title" placeholder="title" />
-          <input type="text" ng-model="ctrl.formdata.author" placeholder="author" />
-          <input type="text" ng-model="ctrl.formdata.content" placeholder="content" /><br/>
-          <input class="submit" type="submit" value="Submit review"/>
-        </form>
-      </div>
-      <div class="reviews" ng-hide="ctrl.toggle">
-        <ul>
-          <li><strong>Title: </strong><span>{{ album.reviews[0].title }}</span></li>
-          <li><strong>Author: </strong><span>{{ album.reviews[0].author }}</span></li>
-          <li><strong>Content: </strong> <span>{{ album.reviews[0].content }}</span></li>
-        </ul>
-        <form ng-submit="ctrl.deleteReview()">
-          <button class="submit" type="submit">Delete review</button>
-        </form>
-        <form class="editReview" ng-submit="ctrl.editReview()">
-          <input type="text" ng-model="ctrl.formdata.title" placeholder="{{album.reviews[0].title}}" />
-          <input type="text" ng-model="ctrl.formdata.author" placeholder="{{album.reviews[0].author}}" />
-          <input type="text" ng-model="ctrl.formdata.content" placeholder="{{album.reviews[0].content}}" /><br/>
-          <input class="submit" type="submit" value="Edit review"/>
-        </form>
-      </div>
-    </div>
-    <aside></aside>
+    <img class="album-art" src="{{ album.img }}">
   </div>
-  <footer></footer>
+
 </body>
 
 </html>
