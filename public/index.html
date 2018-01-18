@@ -30,10 +30,10 @@
         </form>
       </div>
       <div class="reviews" ng-hide="ctrl.toggle">
-        <ul>
-          <li><strong>Title: </strong><span>{{ album.reviews[0].title }}</span></li>
-          <li><strong>Author: </strong><span>{{ album.reviews[0].author }}</span></li>
-          <li><strong>Content: </strong> <span>{{ album.reviews[0].content }}</span></li>
+        <ul ng-repeat='review in album.reviews'>
+          <li><strong>Title: </strong><span>{{ review.title }}</span></li>
+          <li><strong>Author: </strong><span>{{ review.author }}</span></li>
+          <li><strong>Content: </strong> <span>{{ review.content }}</span></li>
         </ul>
         <form ng-submit="ctrl.deleteReview()">
           <button class="submit" type="submit">Delete review</button>
