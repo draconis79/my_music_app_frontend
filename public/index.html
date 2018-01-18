@@ -23,16 +23,17 @@
     <input id="form" class="button" type="submit" value="Submit review">
   </form>
 
+  <div ng-repeat="review in ctrl.album.reviews" ng-if="ctrl.showOne">
+    <p>{{ review.title }}</p>
+    <p>{{ review.author }}</p>
+    <p>{{ review.content }}</p>
+    <p>--------------------</p>
+  </div>
+
   <div class="album" ng-repeat="album in ctrl.albums">
     <h3>{{ album.artist }}</h3>
     <h2>{{ album.title }}</h2>
     <img ng-click="ctrl.albumShow(album)" class="album-art" src="{{ album.img }}">
-    <div ng-repeat="review in ctrl.album.reviews">
-      <p>{{ review.title }}</p>
-      <p>{{ review.author }}</p>
-      <p>{{ review.content }}</p>
-      <p>--------------------</p>
-    </div>
   </div>
 
 </body>
