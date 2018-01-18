@@ -9,7 +9,7 @@ app.controller('mainController', ['$http', function($http) {
   this.showOne = false;
   this.review = {};
   this.reviews = [];
-  this.url = 'https://album-review-api.herokuapp.com/albums'
+  this.url = 'https://album-review-api.herokuapp.com/'
 
     $http({
       method: 'GET',
